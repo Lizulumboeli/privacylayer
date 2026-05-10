@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrivacyLayer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 320px;
+      background: #0a0c10;
+      color: #e2e8f0;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 13px;
+    }
+
+    /* Header */
+    .header {
+      background: #0f1117;
+      border-bottom: 1px solid #1e2330;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      font-size: 20px;
+      width: 36px;
+      height: 36px;
+      background: rgba(0,229,160,0.08);
+      border: 1px solid rgba(0,229,160,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      color: #00e5a0;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: #475569;
+      margin-top: 1px;
+    }
+
+    .toggle-wrap {
+      margin-left: auto;
+    }
+
+    /* Toggle switch */
+    .toggle {
+      position: relative;
+      width: 40px;
+      height: 22px;
+    }
+
+    .toggle input { opacity: 0; width: 0; height: 0; }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: #1e2330;
+      border-radius: 22px;
+      transition: 0.2s;
+      border: 1px solid #2d3748;
+    }
+
+    .slider:before {
+      content: '';
+      position: absolute;
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background: #475569;
+      border-radius: 50%;
+      transition: 0.2s;
+    }
+
+    input:checked + .slider {
+      background: rgba(0,229,160,0.15);
+      border-color: rgba(0,229,160,0.4);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(18px);
+      background: #00e5a0;
+    }
+
+    /* Status bar */
+    .status-bar {
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,229,160,0.04);
+      border-bottom: 1px solid #1a1f2e;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #00e5a0;
+      box-shadow: 0 0 6px rgba(0,229,160,0.6);
+      animation: pulse 2s infinite;
+    }
+
+    .status-dot.off {
+      background: #475569;
+      box-shadow: none;
+      animation: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .status-text {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: #00e5a0;
+      letter-spacing: 0.06em;
+    }
+
+    .status-text.off { color: #475569; }
+
+    /* Site list */
+    .section {
+      padding: 14px 16px;
+      border-bottom: 1px solid #1a1f2e;
+    }
+
+    .section-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: #475569;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .site-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .site-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      background: #111318;
+      border: 1px solid #1e2330;
+      border-radius: 7px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .site-item .icon { font-size: 14px; }
+
+    .site-item .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #00e5a0;
+      margin-left: auto;
+    }
+
+    /* Entity types */
+    .entity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .entity-tag {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 9px;
+      background: #111318;
+      border: 1px solid #1e2330;
+      border-radius: 6px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: #64748b;
+      letter-spacing: 0.04em;
+    }
+
+    .entity-tag .e-icon { font-size: 12px; }
+
+    /* Stats */
+    .stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      padding: 14px 16px;
+      border-bottom: 1px solid #1a1f2e;
+    }
+
+    .stat-box {
+      background: #111318;
+      border: 1px solid #1e2330;
+      border-radius: 8px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 20px;
+      color: #00e5a0;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: #475569;
+      margin-top: 4px;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 12px 16px;
+      text-align: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: #334155;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">🛡️</div>
+    <div>
+      <div class="brand-name">PrivacyLayer</div>
+      <div class="brand-sub">AI Privacy Firewall</div>
+    </div>
+    <div class="toggle-wrap">
+      <label class="toggle">
+        <input type="checkbox" id="enabledToggle" checked />
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Status -->
+  <div class="status-bar">
+    <div class="status-dot" id="statusDot"></div>
+    <span class="status-text" id="statusText">ACTIVE — Scanning prompts</span>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-value" id="statScanned">0</div>
+      <div class="stat-label">Scanned</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value" id="statBlocked">0</div>
+      <div class="stat-label">PII Found</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value" id="statMasked">0</div>
+      <div class="stat-label">Masked</div>
+    </div>
+  </div>
+
+  <!-- Protected Sites -->
+  <div class="section">
+    <div class="section-title">Protected Sites</div>
+    <div class="site-list">
+      <div class="site-item"><span class="icon">🤖</span> ChatGPT <div class="dot"></div></div>
+      <div class="site-item"><span class="icon">🟠</span> Claude.ai <div class="dot"></div></div>
+      <div class="site-item"><span class="icon">💎</span> Gemini <div class="dot"></div></div>
+    </div>
+  </div>
+
+  <!-- Detected Entity Types -->
+  <div class="section">
+    <div class="section-title">Detects</div>
+    <div class="entity-grid">
+      <div class="entity-tag"><span class="e-icon">✉️</span> Email</div>
+      <div class="entity-tag"><span class="e-icon">📞</span> Phone</div>
+      <div class="entity-tag"><span class="e-icon">🏦</span> IBAN</div>
+      <div class="entity-tag"><span class="e-icon">💳</span> Credit Card</div>
+      <div class="entity-tag"><span class="e-icon">🔑</span> API Keys</div>
+      <div class="entity-tag"><span class="e-icon">🔒</span> Passwords</div>
+      <div class="entity-tag"><span class="e-icon">🪪</span> SSN</div>
+      <div class="entity-tag"><span class="e-icon">🌐</span> IP Address</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    All processing local · Zero data sent to servers
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
