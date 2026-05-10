@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 700" font-family="'IBM Plex Sans', 'Segoe UI', sans-serif">
+  <!-- Backdrop -->
+  <rect width="360" height="700" fill="#0a0c10"/>
+
+  <!-- Popup container -->
+  <g transform="translate(20, 20)">
+    <rect x="0" y="0" width="320" height="660" rx="0" fill="#0a0c10"/>
+
+    <!-- Header -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="320" height="68" fill="#0f1117"/>
+      <line x1="0" y1="68" x2="320" y2="68" stroke="#1e2330"/>
+
+      <!-- Logo -->
+      <rect x="16" y="16" width="36" height="36" rx="8" fill="#00e5a0" fill-opacity="0.08" stroke="#00e5a0" stroke-opacity="0.2"/>
+      <text x="34" y="40" font-size="18" text-anchor="middle">🛡️</text>
+
+      <!-- Brand -->
+      <text x="62" y="32" font-size="14" fill="#00e5a0" font-family="'IBM Plex Mono', monospace" letter-spacing="0.04em">PrivacyLayer</text>
+      <text x="62" y="48" font-size="11" fill="#475569">AI Privacy Firewall</text>
+
+      <!-- Toggle (on state) -->
+      <rect x="262" y="22" width="42" height="24" rx="12" fill="#00e5a0" fill-opacity="0.15" stroke="#00e5a0" stroke-opacity="0.4"/>
+      <circle cx="292" cy="34" r="9" fill="#00e5a0"/>
+    </g>
+
+    <!-- Status bar -->
+    <g transform="translate(0, 68)">
+      <rect x="0" y="0" width="320" height="36" fill="#00e5a0" fill-opacity="0.04"/>
+      <line x1="0" y1="36" x2="320" y2="36" stroke="#1a1f2e"/>
+      <circle cx="22" cy="18" r="4" fill="#00e5a0"/>
+      <text x="34" y="22" font-size="11" fill="#00e5a0" font-family="'IBM Plex Mono', monospace" letter-spacing="0.06em">ACTIVE — Scanning prompts</text>
+    </g>
+
+    <!-- Stats Row -->
+    <g transform="translate(16, 118)">
+      <!-- Scanned -->
+      <rect x="0" y="0" width="92" height="60" rx="8" fill="#111318" stroke="#1e2330"/>
+      <text x="46" y="30" font-size="22" fill="#00e5a0" text-anchor="middle" font-family="'IBM Plex Mono', monospace">142</text>
+      <text x="46" y="48" font-size="10" fill="#475569" text-anchor="middle">Scanned</text>
+
+      <!-- PII Found -->
+      <rect x="100" y="0" width="92" height="60" rx="8" fill="#111318" stroke="#1e2330"/>
+      <text x="146" y="30" font-size="22" fill="#00e5a0" text-anchor="middle" font-family="'IBM Plex Mono', monospace">23</text>
+      <text x="146" y="48" font-size="10" fill="#475569" text-anchor="middle">PII Found</text>
+
+      <!-- Masked -->
+      <rect x="200" y="0" width="88" height="60" rx="8" fill="#111318" stroke="#1e2330"/>
+      <text x="244" y="30" font-size="22" fill="#00e5a0" text-anchor="middle" font-family="'IBM Plex Mono', monospace">19</text>
+      <text x="244" y="48" font-size="10" fill="#475569" text-anchor="middle">Masked</text>
+    </g>
+
+    <line x1="0" y1="194" x2="320" y2="194" stroke="#1a1f2e"/>
+
+    <!-- Protected Sites -->
+    <g transform="translate(16, 210)">
+      <text x="0" y="0" font-size="10" fill="#475569" font-family="'IBM Plex Mono', monospace" letter-spacing="0.1em">PROTECTED SITES</text>
+
+      <rect x="0" y="14" width="288" height="32" rx="7" fill="#111318" stroke="#1e2330"/>
+      <text x="14" y="34" font-size="14">🤖</text>
+      <text x="36" y="34" font-size="12" fill="#94a3b8">ChatGPT</text>
+      <circle cx="276" cy="30" r="3" fill="#00e5a0"/>
+
+      <rect x="0" y="50" width="288" height="32" rx="7" fill="#111318" stroke="#1e2330"/>
+      <text x="14" y="70" font-size="14">🟠</text>
+      <text x="36" y="70" font-size="12" fill="#94a3b8">Claude.ai</text>
+      <circle cx="276" cy="66" r="3" fill="#00e5a0"/>
+
+      <rect x="0" y="86" width="288" height="32" rx="7" fill="#111318" stroke="#1e2330"/>
+      <text x="14" y="106" font-size="14">💎</text>
+      <text x="36" y="106" font-size="12" fill="#94a3b8">Gemini</text>
+      <circle cx="276" cy="102" r="3" fill="#00e5a0"/>
+    </g>
+
+    <line x1="0" y1="346" x2="320" y2="346" stroke="#1a1f2e"/>
+
+    <!-- Detects -->
+    <g transform="translate(16, 362)">
+      <text x="0" y="0" font-size="10" fill="#475569" font-family="'IBM Plex Mono', monospace" letter-spacing="0.1em">DETECTS</text>
+
+      <!-- Row 1 -->
+      <rect x="0" y="14" width="140" height="28" rx="6" fill="#111318" stroke="#1e2330"/>
+      <text x="10" y="32" font-size="13">✉️</text>
+      <text x="30" y="31" font-size="10" fill="#64748b" font-family="'IBM Plex Mono', monospace">Email</text>
+
+      <rect x="148" y="14" width="140" height="28" rx="6" fill="#111318" stroke="#1e2330"/>
+      <text x="158" y="32" font-size="13">📞</text>
+      <text x="178" y="31" font-size="10" fill="#64748b" font-family="'IBM Plex Mono', monospace">Phone</text>
+
+      <!-- Row 2 -->
+      <rect x="0" y="48" width="140" height="28" rx="6" fill="#111318" stroke="#1e2330"/>
+      <text x="10" y="66" font-size="13">🏦</text>
+      <text x="30" y="65" font-size="10" fill="#64748b" font-family="'IBM Plex Mono', monospace">IBAN</text>
+
+      <rect x="148" y="48" width="140" height="28" rx="6" fill="#111318" stroke="#1e2330"/>
+      <text x="158" y="66" font-size="13">💳</text>
+      <text x="178" y="65" font-size="10" fill="#64748b" font-family="'IBM Plex Mono', monospace">Credit Card</text>
+
+      <!-- Row 3 -->
+      <rect x="0" y="82" width="140" height="28" rx="6" fill="#111318" stroke="#1e2330"/>
+      <text x="10" y="100" font-size="13">🔑</text>
+      <text x="30" y="99" font-size="10" fill="#64748b" font-family="'IBM Plex Mono', monospace">API Keys</text>
+
+      <rect x="148" y="82" width="140" height="28" rx="6" fill="#111318" stroke="#1e2330"/>
+      <text x="158" y="100" font-size="13">🔒</text>
+      <text x="178" y="99" font-size="10" fill="#64748b" font-family="'IBM Plex Mono', monospace">Passwords</text>
+
+      <!-- Row 4 -->
+      <rect x="0" y="116" width="140" height="28" rx="6" fill="#111318" stroke="#1e2330"/>
+      <text x="10" y="134" font-size="13">🪪</text>
+      <text x="30" y="133" font-size="10" fill="#64748b" font-family="'IBM Plex Mono', monospace">SSN</text>
+
+      <rect x="148" y="116" width="140" height="28" rx="6" fill="#111318" stroke="#1e2330"/>
+      <text x="158" y="134" font-size="13">🌐</text>
+      <text x="178" y="133" font-size="10" fill="#64748b" font-family="'IBM Plex Mono', monospace">IP Address</text>
+    </g>
+
+    <!-- Footer -->
+    <text x="160" y="635" font-size="10" fill="#334155" text-anchor="middle" font-family="'IBM Plex Mono', monospace" letter-spacing="0.04em">All processing local · Zero data sent to servers</text>
+  </g>
+</svg>
